@@ -1,0 +1,13 @@
+{
+  "name": "mosta/php_mvc",
+  "autoload": {
+    "psr-4": {
+      "Http\\":"src/http/",
+      "App\\": "App"
+    }
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.5",
+    "symfony/var-dumper": "^6.2"
+  }
+}
