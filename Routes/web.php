@@ -1,17 +1,10 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Controllers\HomeController;
 use Http\Route;
 
-Route::get('/',function(){
-    echo 'hello';
-});
+Route::get('/this is route',[HomeController::class,"index"]);
 
 
-
-
-
-
-
-
-;

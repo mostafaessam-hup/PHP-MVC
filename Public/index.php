@@ -6,4 +6,5 @@ use Http\Route;
 use Http\Request;
 use Http\Response;
 $route=new Route(new Request,new Response);
-dump($route->request->method(),$route->request->path()); 
+// dump($route->request->method(),$route->request->path()); 
+$route->resolve();   
