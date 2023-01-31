@@ -1,7 +1,7 @@
 <?php
 
 namespace Http;
-
+use View\View;
 use Http\Request;
 use Http\Response;
 
@@ -30,15 +30,21 @@ class Route
         $path = $this->request->path();
         $method = $this->request->method();
         $action = self::$routes[$method][$path] ?? false;
+
+        if(!array_key_exists($path ,self::$routes[$method])){
+            View::makeError("404");
+        }
+
         if (!$action) {
-            return;
-         }
+            return "no action";
+        }
         //404 handling
+        
         if (is_callable($action)) {
             call_user_func_array($action, []);
         }
-        if(is_array($action)){
-            call_user_func_array([new $action[0],$action[1]],[]);
+        if (is_array($action)) {
+            call_user_func_array([new $action[0], $action[1]], []);
         }
     }
 }
