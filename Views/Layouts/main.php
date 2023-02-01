@@ -9,10 +9,10 @@
 
     <title><?= env('APP_NAME'); ?></title>
 
-    <?php include base_path() . 'views/partials/navbar.php'; ?>
 </head>
 
 <body>
+    <?php include base_path() . 'views/partials/navbar.php'; ?>
     <div class="container">
 
         {{content}}

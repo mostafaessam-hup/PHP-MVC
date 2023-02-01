@@ -20,8 +20,8 @@ class View
     }
     public static function makeError($error)
     {
-        
-        self::getveiewcontent($error,true);
+
+        self::getveiewcontent($error, true);
     }
 
     protected static function getveiewcontent($view, $isError = false, $params = [])
@@ -35,22 +35,21 @@ class View
                 }
             }
             $view = $path . end($views) . ".php";
-            var_dump($view);
+            // var_dump($view);
         } else {
             $view = $path . $view . ".php";
-            var_dump($view);
+            // var_dump($view);
         }
         foreach ($params as $param => $value) {
             $$param = $value;
         }
         if ($isError) {
-            var_dump($view);
+            // var_dump($view);
             include $view;
+        } else {
+            ob_start();
+            include $view;
+            return ob_get_clean();
+        }
     }
-    else{
-        ob_start();
-        include $view;
-        return ob_get_clean();
-    }
-}
 }

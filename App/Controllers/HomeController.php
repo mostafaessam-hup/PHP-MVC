@@ -2,11 +2,15 @@
 
 namespace App\Controllers;
 
+use View\View;
 
 class HomeController
 {
     public function index()
     {
-        return View("home");
+        return View::make("home");
     }
+    
+    
 }
+

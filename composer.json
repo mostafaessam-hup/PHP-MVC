@@ -3,7 +3,9 @@
   "autoload": {
     "psr-4": {
       "Http\\":"src/http/",
-      "App\\": "App"
+      "App\\": "App",
+      "View\\": "src/View"
+
     }
   },
   "require": {
