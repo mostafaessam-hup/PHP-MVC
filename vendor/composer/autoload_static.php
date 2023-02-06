@@ -24,6 +24,8 @@ class ComposerStaticInit9a59b302bd1fbf63fbee0339a96d31a8
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Support\\' => 8,
+            'Src\\' => 4,
         ),
         'P' => 
         array (
@@ -67,6 +69,14 @@ class ComposerStaticInit9a59b302bd1fbf63fbee0339a96d31a8
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Support\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/support',
+        ),
+        'Src\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'PhpOption\\' => 
         array (

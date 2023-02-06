@@ -4,7 +4,9 @@
     "psr-4": {
       "Http\\":"src/http/",
       "App\\": "App",
-      "View\\": "src/View"
+      "View\\": "src/View",
+      "Src\\":"src/",
+      "Support\\":"src/support/"
 
     }
   },
