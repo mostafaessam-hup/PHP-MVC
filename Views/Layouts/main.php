@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include base_path() . 'views/partials/navbar.php'; ?>
+    <?php include base_path() . 'Views/partials/navbar.php'; ?>
     <div class="container">
 
         {{content}}

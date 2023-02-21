@@ -51,7 +51,7 @@ class Arr
         }
 
         foreach (explode('.', $key) as $segment) {
-            if (static::accessible($array, $key) && static::exists($array, $segment)) {
+            if (static::accessible($array, $key) && static::exists($array, $segment)) {//
                 $array = $array[$segment];
             } else {
                 return "value($default)";
@@ -74,7 +74,7 @@ class Arr
             $array = &$array[$key];
         }
 
-        $array[array_shift($keys)] = $value;
+        $array[array_shift($keys)] = $value;//
 
         return $array;
     }
@@ -122,7 +122,7 @@ class Arr
         return is_array($value) || $value instanceof ArrayAccess; //knowing that if $value accessible or no
     }
 
-    public static function exists($array, $key) //
+    public static function exists($array, $key) 
     {
         if ($array instanceof ArrayAccess) {
             return $array->offsetExists($key);

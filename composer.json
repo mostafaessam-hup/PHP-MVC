@@ -1,13 +1,13 @@
 {
-  "name": "mosta/php_mvc",
+  "name": "mostafa/php_mvc",
   "autoload": {
     "psr-4": {
-      "Http\\":"src/http/",
+      "Mostafa\\PhpMvc\\": "src/",
+      "Http\\": "src/Http/",
       "App\\": "App",
       "View\\": "src/View",
-      "Src\\":"src/",
-      "Support\\":"src/support/"
-
+      "Src\\": "src/",
+      "Support\\": "src/Support/"
     }
   },
   "require": {

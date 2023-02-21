@@ -3,11 +3,13 @@ require_once __DIR__ . "/../src/Support/helpers.php";
 require_once base_path() . "vendor/autoload.php";
 require_once base_path() . "Routes/web.php";
 
-use Dotenv\Dotenv;
 use Http\Route;
-use Http\Request;
-use Http\Response;
 use Support\Arr;
+use Http\Request;
+use Dotenv\Dotenv;
+use Http\Response;
+use Support\config;
+use Support\Hash;
 
 // $route=new Route(new Request,new Response); 
 // dump($route->request->method(),$route->request->path()); 
@@ -27,6 +29,8 @@ app()->run();
 // Arr::except($arr2,"pas");var_dump($arr2);
 // var_dump(Arr::flatten([0,[10],[20],[[30]],[[[40]]]],2));
 /*$arr=["db"=>["connections"=>["default"=>"mysql","secondary"=>"sqlite"]]];
+var_dump($arr);
+echo "<br>";
 var_dump(Arr::set($arr,"db.connections.default","pgs"));
 echo "<br>";
 Arr::unset($arr,"db.connections.default");var_dump($arr);
@@ -34,6 +38,7 @@ echo "<br>";
 var_dump(Arr::get($arr,"db.connections.secondary"));
 echo "<br>";
 var_dump(Arr::add($arr,"db.connections.default","sql"));*/
-
-
-
+// $config=new config(["db"=>["connection"=>["host"=>"localhost"]]]);var_dump($config->get("db" ));
+// var_dump(config_path());
+// config(["database.default"=>"sqlite"]) ;var_dump(config());
+// var_dump(Hash::verify("token",Hash::password("token")));

@@ -192,7 +192,7 @@ class Dotenv
     /**
      * Parse the given content and resolve nested variables.
      *
-     * This method behaves just like )), only without mutating your actual
+     * This method behaves just like load(), only without mutating your actual
      * environment. We do this by using an array backed repository.
      *
      * @param string $content
