@@ -8,6 +8,9 @@ use Support\Arr;
 use Http\Request;
 use Dotenv\Dotenv;
 use Http\Response;
+use Src\Validation\Rules\AlphaNumericalRule;
+use Src\Validation\Rules\RequiredRule;
+use Src\Validation\Validator;
 use Support\config;
 use Support\Hash;
 
@@ -42,3 +45,10 @@ var_dump(Arr::add($arr,"db.connections.default","sql"));*/
 // var_dump(config_path());
 // config(["database.default"=>"sqlite"]) ;var_dump(config());
 // var_dump(Hash::verify("token",Hash::password("token")));
+$validator=new Validator();
+/*$validator->setrules(["username"=>"required|string","email"=>"required|email"]); 
+$validator->make(["username"=>"mostafa","email"=>"mostafa@gmail.com"]);*/
+$validator->setrules(["username"=>["required","alnum"]]);
+$validator->make(["username"=>""]);
+echo "<br>";
+var_dump($validator->errors());

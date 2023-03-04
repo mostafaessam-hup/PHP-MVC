@@ -2,11 +2,10 @@
   "name": "mostafa/php_mvc",
   "autoload": {
     "psr-4": {
-      "Mostafa\\PhpMvc\\": "src/",
+      "Src\\": "src/",
       "Http\\": "src/Http/",
       "App\\": "App",
       "View\\": "src/View",
-      "Src\\": "src/",
       "Support\\": "src/Support/"
     }
   },
