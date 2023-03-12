@@ -4,6 +4,9 @@ namespace Src\Validation;
 
 use Src\Validation\ErrorBag;
 use Src\Validation\Rules\AlphaNumericalRule;
+use Src\Validation\Rules\BetweenRule;
+use Src\Validation\Rules\contract\Rule;
+use Src\Validation\Rules\MaxRule;
 use Src\Validation\Rules\RequiredRule;
 
 class Validator
@@ -12,27 +15,26 @@ class Validator
     protected array $aliases = [];
     protected array $rules = [];
     protected ErrorBag $errorBag;
-    protected array $ruleMap=[
-        "required"=>RequiredRule::class,
-        "alnum"=>AlphaNumericalRule::class
-    ];
     public function make($data)
     {
         $this->data = $data;
         $this->errorBag = new ErrorBag();
-        $this->validate();
+        $this->validate();   
     }
     protected function validate()
     {
         foreach ($this->rules as $field => $rules) {
-            foreach ($rules as $rule) {
-                if(is_string($rule)){
-                    $rule=new $this->ruleMap[$rule];
-                }
-                if (!$rule->apply($field, $this->getfieldvalue($field), $this->data)) {////
-                    $this->errorBag->add($field, Message::generate($rule, $field));
-                }
+            foreach (RulesResolver::make($rules)  as $rule) {
+                $this->applyRule($field, $rule);
             }
+        }
+    }
+
+    public function applyRule($field, Rule $rule)
+    {
+
+        if (!$rule->apply($field, $this->getfieldvalue($field), $this->data)) { ////
+            $this->errorBag->add($field, Message::generate($rule, $this->aliases($field)));
         }
     }
 
@@ -40,6 +42,9 @@ class Validator
     {
         return $this->data[$field] ?? null;
     }
+
+
+
     public function setrules($rules)
     {
         $this->rules = $rules;

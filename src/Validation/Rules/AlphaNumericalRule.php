@@ -6,7 +6,7 @@ use Src\Validation\Rules\contract\Rule;
 
 class AlphaNumericalRule implements Rule
 {
-    public function apply ($field,$value,$data)
+    public function apply($field,$value,$data)
     {
         return preg_match("/^[a-zA-Z0-9]+/",$value);
     }

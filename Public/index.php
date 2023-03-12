@@ -48,7 +48,8 @@ var_dump(Arr::add($arr,"db.connections.default","sql"));*/
 $validator=new Validator();
 /*$validator->setrules(["username"=>"required|string","email"=>"required|email"]); 
 $validator->make(["username"=>"mostafa","email"=>"mostafa@gmail.com"]);*/
-$validator->setrules(["username"=>["required","alnum"]]);
-$validator->make(["username"=>""]);
+$validator->setrules([/*"email"=>"required|email|between:32,64",*/"password"=>"required|confirmed","password_confirmation"=>"required"]);
+// $validator->setAliases(["username"=>"pass"]);
+$validator->make([/*"email"=>"abgsss",*/"password"=>"mm","password_confirmation"=>"msm"]);
 echo "<br>";
 var_dump($validator->errors());
