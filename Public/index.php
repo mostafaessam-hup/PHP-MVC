@@ -6,13 +6,16 @@ require_once base_path() . "Routes/web.php";
 use Http\Route;
 use Support\Arr;
 use Http\Request;
+use Support\Hash;
 use Dotenv\Dotenv;
 use Http\Response;
-use Src\Validation\Rules\AlphaNumericalRule;
-use Src\Validation\Rules\RequiredRule;
-use Src\Validation\Validator;
 use Support\config;
-use Support\Hash;
+use App\Models\User;
+use Src\Database\Grammers\MySQLGrammer;
+use Src\Support\Str;
+use Src\Validation\Validator;
+use Src\Validation\Rules\RequiredRule;
+use Src\Validation\Rules\AlphaNumericalRule;
 
 // $route=new Route(new Request,new Response); 
 // dump($route->request->method(),$route->request->path()); 
@@ -45,11 +48,40 @@ var_dump(Arr::add($arr,"db.connections.default","sql"));*/
 // var_dump(config_path());
 // config(["database.default"=>"sqlite"]) ;var_dump(config());
 // var_dump(Hash::verify("token",Hash::password("token")));
+/*
 $validator=new Validator();
-/*$validator->setrules(["username"=>"required|string","email"=>"required|email"]); 
-$validator->make(["username"=>"mostafa","email"=>"mostafa@gmail.com"]);*/
-$validator->setrules([/*"email"=>"required|email|between:32,64",*/"password"=>"required|confirmed","password_confirmation"=>"required"]);
+// $validator->setrules(["username"=>"required|string","email"=>"required|email"]); 
+// $validator->make(["username"=>"mostafa","email"=>"mostafa@gmail.com"]);
+$validator->setrules([
+    // "email"=>"required|email|between:32,64",
+    "password"=>"required|confirmed","password_confirmation"=>"required"]);
 // $validator->setAliases(["username"=>"pass"]);
-$validator->make([/*"email"=>"abgsss",*/"password"=>"mm","password_confirmation"=>"msm"]);
+$validator->make([
+    // "email"=>"abgsss",
+    "password"=>"mm","password_confirmation"=>"msm"]);
 echo "<br>";
 var_dump($validator->errors());
+*/
+/*
+var_dump(class_basename(User::class));
+echo "<br>";
+var_dump(Str::singular("moves"));
+echo "<br>";
+var_dump(User::all());
+*/
+/*User::all();
+echo "<br>";
+$keys=["username","email","password","full_name"];
+var_dump("(`".implode("`, `",$keys)."`)");
+echo "<br>";
+var_dump(MySQLGrammer::buildInsertQuery(["username","email","password"]));
+echo "<br>";
+var_dump(MySQLGrammer::buildSelectQuery(["username","email","password"],["username","=","mostafa"]));*/
+/*var_dump(MySQLGrammer::buildDeleteQuery());
+echo "<br>";
+var_dump(MySQLGrammer::buildSelectQuery(["username","email","password"],["username","=","mostafa"]));
+echo "<br>";
+var_dump(MySQLGrammer::buildInsertQuery(["username","email","password"]));
+echo "<br>";
+var_dump(MySQLGrammer::buildUpdateQuery(["username","email","password"]));*/
+var_dump(app()->db->raw("SELECT * From users"));

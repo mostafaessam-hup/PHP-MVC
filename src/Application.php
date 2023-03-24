@@ -1,11 +1,13 @@
 <?php
 
 namespace Src;
-
 use Http\Route;
 use Http\Request;
 use Http\Response;
 use Support\config;
+use Src\Database\DB;
+use Src\Database\Managers\MySqlManager;
+use Src\Database\Managers\SQLiteManager;
 
 class Application
 {
@@ -13,13 +15,23 @@ class Application
     protected Request $request;
     protected Response $response;
     protected config $config;
+    protected DB $db;
     public function __construct()
     {
         $this->request = new Request;
         $this->response = new Response;
         $this->route = new Route($this->request, $this->response);
         $this->config = new config($this->loadconfigurations());
+        $this->db = new DB($this->getDatabaseDriver());
     }
+    protected function getDatabaseDriver()
+    {
+        return match (env('DB_DRIVER')) {
+            "mysql"=> new MySqlManager,
+            default=>new SQLiteManager
+        };
+    }
+
 
     public function loadconfigurations()
     {
@@ -34,7 +46,9 @@ class Application
 
     public function run()
     {
+        $this->db->init();
         $this->route->resolve();
+
     }
     public function __get($name)
     {
