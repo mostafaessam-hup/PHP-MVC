@@ -43,12 +43,11 @@ class Validator
         return $this->data[$field] ?? null;
     }
 
-
-
     public function setrules($rules)
     {
         $this->rules = $rules;
     }
+
     public function passes()
     {
         return empty($this->errors());

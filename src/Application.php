@@ -6,6 +6,7 @@ use Http\Request;
 use Http\Response;
 use Support\config;
 use Src\Database\DB;
+use Src\Support\Session;
 use Src\Database\Managers\MySqlManager;
 use Src\Database\Managers\SQLiteManager;
 
@@ -15,11 +16,13 @@ class Application
     protected Request $request;
     protected Response $response;
     protected config $config;
+    protected Session $session;
     protected DB $db;
     public function __construct()
     {
         $this->request = new Request;
         $this->response = new Response;
+        $this->session = new Session;
         $this->route = new Route($this->request, $this->response);
         $this->config = new config($this->loadconfigurations());
         $this->db = new DB($this->getDatabaseDriver());

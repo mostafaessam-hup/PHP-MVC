@@ -8,6 +8,7 @@ use Src\Validation\Rules\RequiredRule;
 use Src\Validation\Rules\AlphaNumericalRule;
 use Src\Validation\Rules\ConfirmedRule;
 use Src\Validation\Rules\EmailRule;
+use Src\Validation\Rules\UniqueRule;
 
 trait RuleMapper
 {
@@ -17,7 +18,8 @@ trait RuleMapper
         "max" => MaxRule::class,
         "between" => BetweenRule::class,
         "email"=>EmailRule::class,
-        "confirmed"=>ConfirmedRule::class
+        "confirmed"=>ConfirmedRule::class,
+        "unique"=>UniqueRule::class
     ];
     public static function resolve(string $rule, $options)
     {

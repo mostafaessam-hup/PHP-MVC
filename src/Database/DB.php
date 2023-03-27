@@ -16,7 +16,7 @@ class DB
     {
         ConnectsTo::connect($this->manager);
     }
-    protected function raw(string $query, $value=[])
+    protected function raw(string $query, $value = [])
     {
         return $this->manager->query($query, $value);
     }
@@ -24,6 +24,15 @@ class DB
     {
         return $this->manager->create($data);
     }
+    protected function update($id, array $attributes)
+    {
+        return $this->manager->update($id, $attributes);
+    }
+    public function delete ($id)
+    {
+        return $this->manager->delete($id);
+    }
+
     protected function read($columns = '*', $filter = null)
     {
         return $this->manager->read($columns, $filter);

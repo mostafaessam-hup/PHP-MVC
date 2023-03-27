@@ -84,4 +84,16 @@ echo "<br>";
 var_dump(MySQLGrammer::buildInsertQuery(["username","email","password"]));
 echo "<br>";
 var_dump(MySQLGrammer::buildUpdateQuery(["username","email","password"]));*/
-var_dump(app()->db->raw("SELECT * From users"));
+/* 
+// var_dump(app()->db->raw("SELECT * From users"));
+echo "<br>";
+// User::update(2,["username"=>"khaled"]) ;
+// User::delete(2);
+// User::create(["id"=>"2","username"=>"khaled","email"=>"khaled@gmail.com","password"=>bycrypt("112233") ]);
+var_dump(User::where(["id",">","1"]));
+*/
+/* 
+// var_dump(app()->session);
+// app()->session->setFlash("login",["username"=>"mostafa"]);
+var_dump(app()->session->getFlash("login"));
+*/

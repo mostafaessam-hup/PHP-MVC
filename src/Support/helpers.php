@@ -4,6 +4,8 @@ use View\View;
 use Src\Application;
 use Support\Hash;
 use Closure;
+use Http\Request;
+use Http\Response;
 
 if (!function_exists("env")) {
     function env($key, $default = null) /////
@@ -19,10 +21,41 @@ if (!function_exists("bycrypt")) {
         return Hash::password($password);
     }
 }
-if (!function_exists("class_basename")){
-    function class_basename($class){
-        $class=is_object($class)? get_class($class):$class;
-        return basename(str_replace("\\","/",$class));
+
+if (!function_exists("request")) {
+    function request($key = null)
+    {
+        $instance = new Request;
+        if ($key) {
+            return $instance->get($key);
+        }
+        if (is_array($key)) {
+            return $instance->only($key);
+        }
+        return $instance;
+    }
+}
+
+if (!function_exists("back")) {
+    function back()
+    {
+        return (new Response())->back();
+    }
+}
+
+if (!function_exists("old")) {
+    function old($key)
+    {
+        if (app()->session->hasFlash("old")) {
+            return app()->session->getFlash("old")[$key];
+        }
+    }
+}
+if (!function_exists("class_basename")) {
+    function class_basename($class)
+    {
+        $class = is_object($class) ? get_class($class) : $class;
+        return basename(str_replace("\\", "/", $class));
     }
 }
 if (!function_exists("app")) {
